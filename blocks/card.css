@@ -8,17 +8,22 @@
     white-space: nowrap;
     overflow: hidden;
     font-family: "Inter", Arial, sans-serif;
+    margin: 0;
 }
 .card {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     list-style-type: none;
+    width: 100%;
+    overflow: hidden;
 }
 
 .card__image {
     width: 282px;
     height: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .card__description {
