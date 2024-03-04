@@ -11,6 +11,8 @@
 This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
 
 Project URL: https://yvessaintlorens.github.io/se_project_aroundtheus/
+
+Video Overview: https://drive.google.com/file/d/1ewFRmXGSfcOaPZwm2ZZsVEpnWLaI3bt9/view?usp=sharing
   
 **Figma**  
   
