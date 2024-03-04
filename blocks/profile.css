@@ -12,6 +12,7 @@
     "title button"
     "description description";
     grid-template-columns: minmax(auto, 373px) auto;
+    overflow: hidden;
 }
 
 .profile__edit-button {
@@ -35,6 +36,8 @@
     grid-area: title; 
     margin: 0;
     font-family: "Inter", Arial, sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .profile__description {
@@ -44,6 +47,8 @@
     grid-area: description;
     margin: 0;
     font-family: "Inter", Arial, sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .profile__image {
