@@ -12,14 +12,16 @@
     "title button"
     "description description";
     grid-template-columns: minmax(auto, 373px) auto;
-    overflow: hidden;
 }
 
 .profile__edit-button {
     background: transparent url(../images/edit-button.svg) center no-repeat;
     height: 24px;
     width: 24px;
+    margin-left: 18px;
+    margin-right: 0;
     grid-area: button;
+    border: 1px solid rgba(255, 255, 255, 1)
 }
 
 .profile__add-button {
@@ -27,6 +29,8 @@
     width: 150px;
     height: 50px;
     margin-left: auto;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 2px;
 }
 
 .profile__title {
@@ -38,6 +42,7 @@
     font-family: "Inter", Arial, sans-serif;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .profile__description {
@@ -49,6 +54,7 @@
     font-family: "Inter", Arial, sans-serif;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .profile__image {

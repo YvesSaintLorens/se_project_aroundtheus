@@ -13,6 +13,10 @@ This project is made so all the elements are displayed correctly on popular scre
 Project URL: https://yvessaintlorens.github.io/se_project_aroundtheus/
 
 Video Overview: https://drive.google.com/file/d/1ewFRmXGSfcOaPZwm2ZZsVEpnWLaI3bt9/view?usp=sharing
+
+**Description**
+
+This project was a brief introduction to building a website that accounts for multiple devices that would be visiting the page. This project was mainly built using HTML and CSS along with key css elements like display Grid, flex box, and media query. 
   
 **Figma**  
   
@@ -21,5 +25,6 @@ Video Overview: https://drive.google.com/file/d/1ewFRmXGSfcOaPZwm2ZZsVEpnWLaI3bt
 **Images**  
   
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+
   
 Good luck and have fun!
