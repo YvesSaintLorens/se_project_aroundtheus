@@ -1,24 +1,24 @@
 .header {
-    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-    padding: 45px 0 41px;
-    font-family: "Inter", Arial, sans-serif;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  padding: 45px 0 41px;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.header__logo {
+  max-width: 173px;
+}
+
+@media screen and (max-width: 880px) {
+  .header {
+    margin: 0;
+    padding: 28px 0 32px;
   }
-  
+}
+
+@media screen and (max-width: 620px) {
   .header__logo {
-    width: 173px;
+    width: 126px;
+    height: 27px;
+    margin-left: 15px;
   }
-  
-  @media screen and (max-width: 880px) {
-    .header {
-      margin: 0;
-      padding: 28px 0 32px;
-    }
-  }
- 
-  @media screen and (max-width: 620px) {
-    .header__logo {
-      width: 126px;
-      height: 24px;
-      margin-left: 15px;
-    }
-  }
+}
