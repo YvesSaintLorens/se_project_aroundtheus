@@ -18,8 +18,10 @@
     max-width: 880px;
   }
 
-@media screen and (max-width: 880px) {
+  @media screen and (max-width: 880px) {
     .cards__list {
-      padding-bottom: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
