@@ -98,44 +98,6 @@
     visibility: visible;
   }
   
-  .modal__image {
-    max-height: 75vh;
-    max-width: 75vw;
-  }
-  
-  .modal__image-label {
-    color: rgba(255, 255, 255, 1);
-    font-family: Inter;
-    font-size: 12px;
-    font-weight: 400;
-    bottom: -33px;
-    left: -200px;
-    text-align: left;
-    margin-top: 10px;
-    margin-bottom: 0;
-  }
-  
-  .modal__container-image {
-    background: transparent;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-  }
-  
-  .modal__image-close {
-    position: absolute;
-    bottom: calc(100% + 5px);
-    left: calc(100% + 5px);
-    background-image: url(../images/Close\ Icon.svg);
-    border: none;
-    background-color: transparent;
-    outline: none;
-    height: 40px;
-    width: 40px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-  }
   
   @media screen and (max-width: 320px) {
     .modal {
@@ -190,25 +152,4 @@
       align-self: center;
       font-size: 14px;
     }
-  
-    .modal__image {
-      max-width: 282px;
-    }
-  
-    .modal__image-label {
-      margin-top: 10px;
-    }
-  
-    .modal__container-image {
-      display: flex;
-      padding: 0px;
-      width: 240px;
-    }
-  }
-  
-  .modal__image-close {
-    width: 30px;
-    height: 30px;
-    top: -230x;
-    right: -15px;
   }
