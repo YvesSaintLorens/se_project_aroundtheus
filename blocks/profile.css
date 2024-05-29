@@ -51,7 +51,6 @@ cursor: pointer;
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 415px;
-  overflow: hidden;
   font-family: 'Inter',Arial, sans-serif;
 }
 
