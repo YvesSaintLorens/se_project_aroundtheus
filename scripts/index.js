@@ -98,9 +98,8 @@ profileEditForm.addEventListener("submit", (e) => {
 });
 
 
-cardListEl.innerHTML = '';
-
-initialCards.forEach((cardData, index) => {
+initialCards.forEach((cardData) => {
     const cardElement = getCardElement(cardData);
     cardListEl.prepend(cardElement);
-});
+  });
+
