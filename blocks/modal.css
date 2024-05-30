@@ -112,16 +112,10 @@
     }
   
     .modal__close {
-      position: absolute;
-      top: -45px;
-      right: -0px;
-      background-image: url(../images/modal-close.png);
-      border: none;
-      background-color: transparent;
-      outline: none;
-      height: 26px;
-      width: 26px;
-    }
+       width: 26px;
+       height: 26px;
+       left: 263px;
+      }
   
     .modal__form {
       padding: 0 0 15px 5px;
