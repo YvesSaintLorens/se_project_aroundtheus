@@ -40,7 +40,6 @@
     border-radius: 0 0 10px 10px;
 }
 
-/* Default styling for the like button */
 .card__like-button {
     background: transparent url('../images/like-button.svg') center no-repeat;
     width: 21px;
@@ -49,7 +48,7 @@
     transition: opacity 0.3s;
 }
 
-/* Hover effect */
+
 .card__like-button:hover {
     opacity: 50%;
     cursor: pointer;
