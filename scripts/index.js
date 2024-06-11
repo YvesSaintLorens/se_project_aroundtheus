@@ -75,7 +75,7 @@ function getCardElement(cardData) {
 
     const likeButton = cardElement.querySelector(".card__like-button");
     likeButton.addEventListener("click", function() {
-        this.classList.toggle("card__like-button_active");
+        likeButton.classList.toggle("card__like-button_active");
     });
 
     cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
@@ -107,6 +107,8 @@ function handleProfileAddSubmit(e) {
     const name = cardTitleInput.value;
     const link = cardUrlInput.value;
     renderCard({ name, link });
+    cardTitleInput.value = ''; 
+    cardUrlInput.value = '';   
     closeModal(profileAddModal);
 }
 
