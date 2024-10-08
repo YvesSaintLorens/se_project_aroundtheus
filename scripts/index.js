@@ -1,31 +1,31 @@
 // Data
 const initialCards = [
-    {
-      name: "Yosemite Valley",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-    },
-    {
-      name: "Lake Louise",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-    },
-    {
-      name: "Bald Mountains",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-    },
-    {
-      name: "Latemar",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-    },
-    {
-      name: "Vanoise National Park",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-    },
-    {
-      name: "Lago di Braies",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-    },
-  ];
-  
+  {
+    name: "Yosemite Valley",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+  },
+];
+
 // Elements
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileAddBtn = document.querySelector(".profile__add-button");
@@ -45,78 +45,99 @@ const profileFormElement = profileEditModal.querySelector(".modal__form");
 const profileAddElement = profileAddModal.querySelector("#add-modal-form");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
-const cardTitleInput = profileAddModal.querySelector("input[name='title']");
-const cardUrlInput = profileAddModal.querySelector("input[name='url']");
+const cardTitleInput = document.querySelector("#card-title-input");
+const cardUrlInput = document.querySelector("#card-url-input");
 
+// Open Modal
 function openModal(modal) {
-    modal.classList.add("modal_opened");
+  modal.classList.add("modal_opened");
 }
 
+// Close Modal
 function closeModal(modal) {
-    modal.classList.remove("modal_opened");
+  modal.classList.remove("modal_opened");
 }
 
+// Open Image Preview Modal
 function openImageModal(imageSrc, imageAlt) {
-    if (!modalImage) {
-        console.error("Modal image element not found");
-        return;
-    }
-    modalImage.src = imageSrc;
-    modalImage.alt = imageAlt;
-    modalTitle.textContent = imageAlt;
-    openModal(imagePreviewModal);
+  modalImage.src = imageSrc;
+  modalImage.alt = imageAlt;
+  modalTitle.textContent = imageAlt;
+  openModal(imagePreviewModal);
 }
+
+// Create Card Element
 function getCardElement(cardData) {
-    const cardElement = cardTemplate.cloneNode(true);
-    const cardImageEl = cardElement.querySelector(".card__image");
-    cardImageEl.src = cardData.link;
-    cardImageEl.alt = cardData.name;
-    cardElement.querySelector(".card__title").textContent = cardData.name;
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImageEl = cardElement.querySelector(".card__image");
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
+  cardElement.querySelector(".card__title").textContent = cardData.name;
 
-    const likeButton = cardElement.querySelector(".card__like-button");
-    likeButton.addEventListener("click", function() {
-        likeButton.classList.toggle("card__like-button_active");
-    });
+  const likeButton = cardElement.querySelector(".card__like-button");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
 
-    cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
-        cardElement.remove();
-    });
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
 
-    cardImageEl.addEventListener("click", () => {
-        openImageModal(cardData.link, cardData.name);
-    });
+  cardImageEl.addEventListener("click", () => {
+    openImageModal(cardData.link, cardData.name);
+  });
 
-    return cardElement;
+  return cardElement;
 }
 
+// Render Card Element
 function renderCard(cardData) {
-    const cardElement = getCardElement(cardData);
-    cardListEl.prepend(cardElement);
+  const cardElement = getCardElement(cardData);
+  cardListEl.prepend(cardElement);
 }
 
-// Event Handlers
+// Handle Profile Edit Submit
 function handleProfileEditSubmit(e) {
-    e.preventDefault();
-    profileTitle.textContent = profileTitleInput.value;
-    profileDescription.textContent = profileDescriptionInput.value;
-    closeModal(profileEditModal);
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closeModal(profileEditModal);
 }
 
+// Handle Add New Card Submit
 function handleProfileAddSubmit(e) {
-    e.preventDefault();
-    const name = cardTitleInput.value;
-    const link = cardUrlInput.value;
-    renderCard({ name, link });
-    cardTitleInput.value = ''; 
-    cardUrlInput.value = '';   
-    closeModal(profileAddModal);
+  e.preventDefault();
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
+  renderCard({ name, link });
+  cardTitleInput.value = ''; // Clear the input after adding
+  cardUrlInput.value = ''; // Clear the input after adding
+  closeModal(profileAddModal);
+}
+
+// Close Modal on Overlay Click
+function closeModalOnOverlay(e) {
+  if (e.target.classList.contains('modal_opened')) {
+    closeModal(e.target);
+  }
+}
+
+// Close Modal with ESC key
+function closeModalOnEsc(e) {
+  if (e.key === "Escape") {
+    const openModal = document.querySelector(".modal_opened");
+    if (openModal) {
+      closeModal(openModal);
+    }
+  }
 }
 
 // Event Listeners
 profileEditBtn.addEventListener("click", () => {
-    profileTitleInput.value = profileTitle.textContent;
-    profileDescriptionInput.value = profileDescription.textContent;
-    openModal(profileEditModal);
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  openModal(profileEditModal);
 });
 
 profileAddBtn.addEventListener("click", () => openModal(profileAddModal));
@@ -131,4 +152,8 @@ profileAddElement.addEventListener("submit", handleProfileAddSubmit);
 // Initialize with initial cards
 initialCards.forEach((cardData) => renderCard(cardData));
 
+// Listen for overlay click
+document.addEventListener("mousedown", closeModalOnOverlay);
 
+// Listen for ESC key
+document.addEventListener("keydown", closeModalOnEsc);
