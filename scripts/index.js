@@ -35,7 +35,7 @@ const imagePreviewModal = document.querySelector("#modal__image-preview");
 const profileEditCloseBtn = profileEditModal.querySelector(".modal__close");
 const profileAddCloseBtn = profileAddModal.querySelector(".modal__close");
 const imageModalClose = document.querySelector("#modal__close-preview");
-const modalImage = document.querySelector(".preview__image");
+const modalImage = document.querySelector(".modal__preview-image");
 const modalTitle = document.querySelector(".modal__preview-title");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
@@ -51,11 +51,15 @@ const cardUrlInput = document.querySelector("#card-url-input");
 // Open Modal
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("mousedown", closeModalOnOverlay);
+  document.addEventListener("keydown", closeModalOnEsc);
 }
 
 // Close Modal
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("mousedown", closeModalOnOverlay);
+  document.removeEventListener("keydown", closeModalOnEsc);
 }
 
 // Open Image Preview Modal
@@ -111,8 +115,8 @@ function handleProfileAddSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link });
-  cardTitleInput.value = ''; // Clear the input after adding
-  cardUrlInput.value = ''; // Clear the input after adding
+  cardTitleInput.value = ''; 
+  cardUrlInput.value = ''; 
   closeModal(profileAddModal);
 }
 
@@ -149,11 +153,5 @@ imageModalClose.addEventListener("click", () => closeModal(imagePreviewModal));
 profileFormElement.addEventListener("submit", handleProfileEditSubmit);
 profileAddElement.addEventListener("submit", handleProfileAddSubmit);
 
-// Initialize with initial cards
+// Initialize cards
 initialCards.forEach((cardData) => renderCard(cardData));
-
-// Listen for overlay click
-document.addEventListener("mousedown", closeModalOnOverlay);
-
-// Listen for ESC key
-document.addEventListener("keydown", closeModalOnEsc);
