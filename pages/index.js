@@ -1,3 +1,8 @@
+import { enableValidation } from '../components/FormValidator.js'; 
+
+import { Card } from '../components/Card.js';
+
+
 // Data
 const initialCards = [
   {
@@ -25,6 +30,19 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+// Validation
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+// Enable form validation
+enableValidation(config);
 
 // Elements
 const profileEditBtn = document.querySelector("#profile-edit-button");
