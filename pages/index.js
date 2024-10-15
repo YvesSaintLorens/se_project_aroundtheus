@@ -1,7 +1,5 @@
-import { enableValidation } from '../components/FormValidator.js'; 
-
+import { FormValidator } from '../components/FormValidator.js'; 
 import { Card } from '../components/Card.js';
-
 
 // Data
 const initialCards = [
@@ -31,7 +29,7 @@ const initialCards = [
   },
 ];
 
-// Validation
+// Validation configuration object
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -40,9 +38,6 @@ const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-
-// Enable form validation
-enableValidation(config);
 
 // Elements
 const profileEditBtn = document.querySelector("#profile-edit-button");
@@ -62,7 +57,6 @@ const profileDescriptionInput = document.querySelector("#profile-description-inp
 const profileFormElement = profileEditModal.querySelector(".modal__form");
 const profileAddElement = profileAddModal.querySelector("#add-modal-form");
 const cardListEl = document.querySelector(".cards__list");
-const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 const cardTitleInput = document.querySelector("#card-title-input");
 const cardUrlInput = document.querySelector("#card-url-input");
 
@@ -88,35 +82,11 @@ function openImageModal(imageSrc, imageAlt) {
   openModal(imagePreviewModal);
 }
 
-// Create Card Element
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardElement.querySelector(".card__title").textContent = cardData.name;
-
-  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  cardImageEl.addEventListener("click", () => {
-    openImageModal(cardData.link, cardData.name);
-  });
-
-  return cardElement;
-}
-
-// Render Card Element
+// Render Card using Card class
 function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
+  const card = new Card(cardData, '#card-template', openImageModal);
+  const cardElement = card.generateCard();
+  cardListEl.prepend(cardElement); // Adds the card to the DOM
 }
 
 // Handle Profile Edit Submit
@@ -135,6 +105,7 @@ function handleProfileAddSubmit(e) {
   renderCard({ name, link });
   cardTitleInput.value = ''; 
   cardUrlInput.value = ''; 
+  cardFormValidator._toggleButtonState(); 
   closeModal(profileAddModal);
 }
 
@@ -171,5 +142,12 @@ imageModalClose.addEventListener("click", () => closeModal(imagePreviewModal));
 profileFormElement.addEventListener("submit", handleProfileEditSubmit);
 profileAddElement.addEventListener("submit", handleProfileAddSubmit);
 
-// Initialize cards
+// Initialize cards using the Card class
 initialCards.forEach((cardData) => renderCard(cardData));
+
+// Initialize form validation
+const profileFormValidator = new FormValidator(config, profileFormElement);
+const cardFormValidator = new FormValidator(config, profileAddElement);
+
+profileFormValidator.enableValidation();
+cardFormValidator.enableValidation();

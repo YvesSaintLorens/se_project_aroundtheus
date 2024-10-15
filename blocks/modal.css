@@ -133,14 +133,13 @@
   width: 358px;
   height: 50.15px;
   background-color: rgba(0, 0, 0, 1);
-  font: "Inter", Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   color: #ffffff;
   margin-left: 36px;
   font-size: 18px;
   font-weight: 400;
   line-height: 21.78px;
   text-align: center;
-  margin-top: 31.34px;
 }
 
 .modal__button_disabled {
@@ -153,7 +152,7 @@
 .modal__error {
   width: fit-content;
   height: 12px;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 14.52px;
@@ -171,6 +170,7 @@
 .modal__error_visible {
   opacity: 1;
 }
+
 
 @media screen and (max-width: 620px) {
   .modal__container {
@@ -195,10 +195,13 @@
     margin-left: 22px;
   }
   .modal__button {
-    width: 238px;
-    height: 46px;
-    margin: 0 22px 25px;
-    font-size: 14px;
+    width: 430px;
+    height: 330px;
+    top: 195px;
+    left: 425px;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;    
   }
   .modal__close {
     width: 26px;
