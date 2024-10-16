@@ -82,11 +82,14 @@ function openImageModal(imageSrc, imageAlt) {
   openModal(imagePreviewModal);
 }
 
-// Render Card using Card class
-function renderCard(cardData) {
+function createCard(cardData) {
   const card = new Card(cardData, '#card-template', openImageModal);
-  const cardElement = card.generateCard();
-  cardListEl.prepend(cardElement); // Adds the card to the DOM
+  return card.generateCard();
+}
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
+  cardListEl.prepend(cardElement);
 }
 
 // Handle Profile Edit Submit
@@ -105,7 +108,7 @@ function handleProfileAddSubmit(e) {
   renderCard({ name, link });
   cardTitleInput.value = ''; 
   cardUrlInput.value = ''; 
-  cardFormValidator._toggleButtonState(); 
+  cardFormValidator.toggleButtonState(); 
   closeModal(profileAddModal);
 }
 
